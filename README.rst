@@ -2,9 +2,10 @@ Introduction
 ============
 
 Contains logic to load .groovy files and execute them; allowing replacing methods, catching missing methods, referencing each other and passing parameters up and down, etc.
+
 Only handles Groovy scripts
 
-.. note:: the structure of the directories is add-hoc (ala Jenkins shared pipelines style), but other structures will work
+Note: the structure of the directories is add-hoc (ala Jenkins shared pipelines style), but other structures will work
 
 Quickstart
 ==========
