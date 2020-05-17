@@ -16,7 +16,7 @@ class c20_pipelineTest extends GroovyTestCase {
          some_key: 'some_value'
       ])
       assert pipeline.config != null
-      assert pipeline.config.callerConfig.some_key == 'some_value'
+      assert pipeline.config.some_key == 'some_value'
    }
 
    void test3() {
@@ -25,10 +25,21 @@ class c20_pipelineTest extends GroovyTestCase {
          some_key: 'some_value'
       ])
       assert pipeline.config != null
-      pipeline.config.each {
-         println(it)
-      }
-      assert pipeline.config.targetLabel == 'master'
+      assert pipeline.config.some_key == 'some_value'
+      assert pipeline.config.ciPipeline_key == 'some_value'
+      assert pipeline.config.levelClassMethodConfigVar
+      assert pipeline.config.levelClassMethodClosureInConfigVar
+   }
+
+   void test_interceptMethod() {
+      def pipeline = new Pipeline(this)
+      def count = 0
+      pipeline.mock('echo', { Object s -> // methods can be intercepted
+         println('intercepted!')
+         count += 1
+      })
+      pipeline()
+      assert count == 3
    }
 
 }

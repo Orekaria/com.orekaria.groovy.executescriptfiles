@@ -52,7 +52,7 @@ class GroovyScriptHelper {
       script.getBinding().with {
          setVariable("echo", { println it })
          setVariable("step", { String s, Closure cl ->
-            println "inside step ${s}"
+            println "(step) in '${s}'"
             cl.call(s)
          })
       }

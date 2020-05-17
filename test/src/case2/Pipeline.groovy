@@ -19,14 +19,11 @@ class Pipeline {
    }
 
    Map getConfig() {
-      if (script.c21_ciPipeline != null) {
-         return script.c21_ciPipeline.config
-      }
-      script.config
+      return script.c21_ciPipeline.config
    }
 
-   void intercept(String s, Closure closure) {
-      script.getBinding().setVariable("echo", { println 'intercepted!' })
+   void mock(String name, Closure cl) {
+      script.getBinding().setVariable(name, { cl() })
    }
 
 }
