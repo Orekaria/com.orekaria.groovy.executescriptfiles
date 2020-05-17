@@ -1,10 +1,10 @@
-package pipelines.case01
+package pipelines.case1
 
-import src.case01.Pipeline
-import src.case01.PipelineMock
-import src.case01.PipelineMock2
+import src.case1.Pipeline
+import src.case1.PipelineMock
+import src.case1.PipelineMock2
 
-class minimalPipelineTest extends GroovyTestCase {
+class c10_pipelineTest extends GroovyTestCase {
 
    void test() {
       def pipeline = new PipelineMock(this).pipeline

@@ -1,8 +1,8 @@
-package pipelines.case01
+package pipelines.case1
 
 import src.GroovyScriptHelper
 
-class minimalPipelineTest_v01 extends GroovyTestCase {
+class c10_pipelineTest_0 extends GroovyTestCase {
 
    void test_interceptEcho() {
       def echoOutput = new LinkedList()
@@ -16,9 +16,9 @@ class minimalPipelineTest_v01 extends GroovyTestCase {
    }
 
    void test_minimal() {
-      def pipeline = GroovyScriptHelper.loadScript("minimalPipeline")
+      def pipeline = GroovyScriptHelper.loadScript("c10_pipeline")
       pipeline()
-      assert pipeline.ciPipeline.isSuccess == true
+      assert pipeline.c11_ciPipeline.isSuccess == true
    }
 
    void test_getTasks() {

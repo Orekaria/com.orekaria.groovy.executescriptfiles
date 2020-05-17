@@ -1,4 +1,4 @@
-package src.case02
+package src.case1
 
 import src.GroovyScriptHelper
 
@@ -19,9 +19,6 @@ class Pipeline {
    }
 
    Map getConfig() {
-      if (script.x021_ciPipeline != null) {
-         return script.x021_ciPipeline.config
-      }
       script.config
    }
 

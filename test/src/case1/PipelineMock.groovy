@@ -1,4 +1,4 @@
-package src.case01
+package src.case1
 
 import src.GroovyScriptHelper
 

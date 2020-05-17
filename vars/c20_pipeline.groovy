@@ -1,7 +1,7 @@
 def call(Map config = [:]) {
 
-   x021_ciPipeline({ base ->
-      // def log = new Logger('x020_pipeline')
+   c21_ciPipeline({ base ->
+      // def log = new Logger('c20_pipeline')
       callerConfig = config
       targetLabel = 'master'
 

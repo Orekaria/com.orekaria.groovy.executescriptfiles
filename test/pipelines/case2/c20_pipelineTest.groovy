@@ -1,8 +1,8 @@
-package pipelines.case02
+package pipelines.case2
 
-import src.case02.Pipeline
+import src.case2.Pipeline
 
-class x020_pipelineTest extends GroovyTestCase {
+class c20_pipelineTest extends GroovyTestCase {
 
    void test() {
       def pipeline = new Pipeline(this)

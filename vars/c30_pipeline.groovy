@@ -8,7 +8,7 @@ def call(Map config = [:]) {
 
    config.targetLabel = 'master'
 
-   x031_ciPipeline({ base ->
+   c31_ciPipeline({ base ->
       config.actionLevel = 4
       println base.toString()
    })

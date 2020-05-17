@@ -15,7 +15,7 @@ class GroovyScriptHelper {
       def script = loadScriptFromVars(filename)
 
       // add methods required to fully execute a script
-      attachMocks(script)
+      injectMocks(script)
 
       // bind the rest of the scripts in the 'vars' directory, to the script
       def dir = new File('vars')
@@ -42,13 +42,13 @@ class GroovyScriptHelper {
    }
 
    private static Script loadScriptFromVars(String filename) {
-      GroovyScriptEngine script_engine = new GroovyScriptEngine('vars/')
-      Class<Script> script_class = script_engine.loadScriptByName("${filename}.groovy")
-      Script script = script_class.newInstance()
+      GroovyScriptEngine gse = new GroovyScriptEngine('vars/')
+      Class<Script> scriptClass = gse.loadScriptByName("${filename}.groovy")
+      Script script = scriptClass.newInstance()
       return script
    }
 
-   private static void attachMocks(Script script) {
+   private static void injectMocks(Script script) {
       script.getBinding().with {
          setVariable("echo", { println it })
          setVariable("step", { String s, Closure cl ->
