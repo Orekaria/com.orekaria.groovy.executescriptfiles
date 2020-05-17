@@ -1,6 +1,6 @@
 package pipelines.case0
 
-class basicModelTest extends GroovyTestCase {
+class standaloneTest extends GroovyTestCase {
 
    void test_me() {
       def echoOutput = new LinkedList()
