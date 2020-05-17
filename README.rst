@@ -30,7 +30,7 @@ The project is divided in 3 groups of components: scripts (in :code:`vars`), scr
 
 And organized in case 0, 1, 2, 3
 
-- case 0: contains the :code:`standaloneTest` that contains all the code required to be executed
+- case 0: with only the :code:`standaloneTest`, that can run by its own
 
 - case 1: some random approaches
 
