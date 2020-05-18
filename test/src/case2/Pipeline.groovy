@@ -5,12 +5,15 @@ import src.GroovyScriptHelper
 class Pipeline {
 
    Script script
+   Map env = [:]
 
    Pipeline(GroovyTestCase groovyTestCase) {
       script = GroovyScriptHelper.loadScript(groovyTestCase)
-      script.binding.variables.env = [
-         WORKSPACE: '/srv/ci/workspace'
-      ]
+      script.binding.variables.with {
+         env = this.env
+         env.WORKSPACE = '/srv/ci/workspace'
+         env.TARGET_LABEL = 'master'
+      }
    }
 
    def call(Closure cl) {

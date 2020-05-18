@@ -94,9 +94,24 @@ class c20_pipelineTest extends GroovyTestCase {
       println "pipeline.script.env = '${pipeline.script.env}'"
       println "pipeline.script.binding.env = '${pipeline.script.binding.env}'"
       println "pipeline.script.binding.variables.env = '${pipeline.script.binding.variables.env}'"
-      assert pipeline.script.env.INTERCEPTED      
+      assert pipeline.script.env.INTERCEPTED
       assert pipeline.script.binding.env.INTERCEPTED
       assert pipeline.script.binding.variables.env.INTERCEPTED
+      // println "pipeline.script.properties.env = '${pipeline.script.properties.env}'"
+      // println "pipeline.script.binding.properties.env = '${pipeline.script.binding.properties.env}'"
+   }
+
+   void test_env2() {
+      def pipeline = new Pipeline(this)
+      pipeline()
+      println "pipeline.env = '${pipeline.env}'"
+      println "pipeline.script.env = '${pipeline.script.env}'"
+      println "pipeline.script.binding.env = '${pipeline.script.binding.env}'"
+      println "pipeline.script.binding.variables.env = '${pipeline.script.binding.variables.env}'"
+      assert pipeline.env.TARGET_LABEL == 'master'
+      assert pipeline.script.env.TARGET_LABEL == 'master'
+      assert pipeline.script.binding.env.TARGET_LABEL == 'master'
+      assert pipeline.script.binding.variables.env.TARGET_LABEL == 'master'
       // println "pipeline.script.properties.env = '${pipeline.script.properties.env}'"
       // println "pipeline.script.binding.properties.env = '${pipeline.script.binding.properties.env}'"
    }
