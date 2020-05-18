@@ -14,9 +14,6 @@ class GroovyScriptHelper {
       // load a script
       def script = loadScriptFromVars(filename)
 
-      // add methods required to fully execute a script
-      injectMocks(script)
-
       // bind the rest of the scripts in the 'vars' directory, to the script
       def dir = new File('vars')
       println "load all objects in the '${dir.canonicalPath}' directory and bind them"
@@ -37,6 +34,9 @@ class GroovyScriptHelper {
          // create a bind to the parent so the parent can reference it
          script.getBinding().setVariable(objectName, scriptToBind)
       }
+
+      // add methods required to fully execute a script
+      injectMocks(script)
 
       return script
    }
