@@ -8,6 +8,9 @@ class Pipeline {
 
    Pipeline(GroovyTestCase groovyTestCase) {
       script = GroovyScriptHelper.loadScript(groovyTestCase)
+      script.binding.variables.env = [
+         WORKSPACE: '/srv/ci/workspace'
+      ]
    }
 
    def call(Closure cl) {
@@ -23,7 +26,7 @@ class Pipeline {
    }
 
    void mock(String name, Closure cl) {
-      script.getBinding().setVariable(name, { cl() })
+      script.binding.setVariable(name, { cl() })
    }
 
 }

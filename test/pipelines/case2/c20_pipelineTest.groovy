@@ -81,20 +81,24 @@ class c20_pipelineTest extends GroovyTestCase {
       assert pipeline2.config.respondsTo('some_key') == []
    }
 
-   /**
-    * Properties cannot be intercepted with .mock
-    */
-   void test_interceptProperty() {
+   void test_env() {
       def pipeline = new Pipeline(this)
-      def count = 0
-      pipeline.mock('config', { -> // properties can be intercepted
-         println('intercepted!')
-         count += 1
-      })
       pipeline()
-      shouldFail {
-         assert count == 3
-      }
+      assert pipeline.script.binding.variables.env.WORKSPACE == '/srv/ci/workspace'
+   }
+
+   void test_envIntercepted() {
+      def pipeline = new Pipeline(this)
+      pipeline.script.binding.setVariable('env', [INTERCEPTED: true])
+      pipeline()
+      println "pipeline.script.env = '${pipeline.script.env}'"
+      println "pipeline.script.binding.env = '${pipeline.script.binding.env}'"
+      println "pipeline.script.binding.variables.env = '${pipeline.script.binding.variables.env}'"
+      assert pipeline.script.env.INTERCEPTED      
+      assert pipeline.script.binding.env.INTERCEPTED
+      assert pipeline.script.binding.variables.env.INTERCEPTED
+      // println "pipeline.script.properties.env = '${pipeline.script.properties.env}'"
+      // println "pipeline.script.binding.properties.env = '${pipeline.script.binding.properties.env}'"
    }
 
 }
