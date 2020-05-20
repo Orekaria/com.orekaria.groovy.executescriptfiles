@@ -37,11 +37,15 @@ And organized in case 0, 1, 2, 3
 
 - case 2: gives more weight to the deeper script. :code:`c21_ciPipeline` in this case
 
+- case 3: gives more weight to the main script. :code:`c30_pipeline` in this case
+
    this is the approach that I will finally implement in a Jenkins Shared Library project
 
    it is thread safe and includes a thread safe test
 
-- case 3: gives more weight to the main script. :code:`c30_pipeline` in this case
+- case 4:
+
+    this is a very interesting variant in which delegates are defined in order to run a DSL script
 
 GroovyScriptHelper
 ------------------
