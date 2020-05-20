@@ -1,6 +1,7 @@
 package src
 
 import org.apache.commons.io.FilenameUtils
+import org.codehaus.groovy.control.CompilerConfiguration
 
 class GroovyScriptHelper {
 
@@ -28,7 +29,7 @@ class GroovyScriptHelper {
          }
          // redirect all unknown properties to the parent
          scriptToBind.metaClass.propertyMissing = { String name ->
-            // println "missing property '${name}' passed to caller"
+            println "missing property '${name}' passed to caller"
             script[name]
          }
          // create a bind to the parent so the parent can reference it
@@ -57,4 +58,13 @@ class GroovyScriptHelper {
          })
       }
    }
+
+   static DelegatingScript loadDelegatingScript(String filename) {
+      CompilerConfiguration cc = new CompilerConfiguration()
+      cc.setScriptBaseClass(DelegatingScript.class.getName())
+      GroovyShell sh = new GroovyShell(null, new Binding(), cc)
+      DelegatingScript script = (DelegatingScript) sh.parse(new File(filename))
+      return script
+   }
+
 }
